@@ -1,0 +1,117 @@
+<div
+  class="sidenav"
+  [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <img [src]="ruta" class="" width="30 " height="33" />
+    </button>
+    <div class="logo-text" @fadeInOut *ngIf="collapsed">MATEOS</div>
+    <button
+      class="btn-close"
+      @rotate
+      *ngIf="collapsed"
+      (click)="closeSidenav()"
+    >
+      <i class="fal fa-times close-icon"></i>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item" *ngFor="let data of navData">
+      <a
+        href=""
+        class="sidenav-nav-link"
+        [routerLink]="[data.routeLink]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{
+          data.label
+        }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+<div *ngIf="isCustomerLoggedIn">
+  <div
+    class="sidenav"
+    [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <div class="logo-container">
+      <button class="logo" (click)="toggleCollapse()">
+        <img [src]="ruta" class="" width="30 " height="33" />
+      </button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">MATEOS</div>
+      <button
+        class="btn-close"
+        @rotate
+        *ngIf="collapsed"
+        (click)="closeSidenav()"
+      >
+        <i class="fal fa-times close-icon"></i>
+      </button>
+    </div>
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of customerData">
+        <a
+          href=""
+          class="sidenav-nav-link"
+          [routerLink]="[data.routeLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{
+            data.label
+          }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+<div *ngIf="isAdminLoggedIn">
+  <div
+    class="sidenav"
+    [ngClass]="collapsed ? 'sidenav-collapsed' : ''"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <div class="logo-container">
+      <button class="logo" (click)="toggleCollapse()">
+        <img [src]="ruta" class="" width="30 " height="33" />
+      </button>
+      <div class="logo-text" @fadeInOut *ngIf="collapsed">MATEOS</div>
+      <button
+        class="btn-close"
+        @rotate
+        *ngIf="collapsed"
+        (click)="closeSidenav()"
+      >
+        <i class="fal fa-times close-icon"></i>
+      </button>
+    </div>
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of administrador">
+        <a
+          href=""
+          class="sidenav-nav-link"
+          [routerLink]="[data.routeLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{
+            data.label
+          }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

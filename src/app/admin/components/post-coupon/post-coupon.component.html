@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Añadir cupon</h2>
+
+  <form [formGroup]="couponForm" (ngSubmit)="addCoupon()">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" placeholder="Nombre" formControlName="name" />
+      <mat-error *ngIf="couponForm.get('name')?.hasError('required')"
+        >Este campo es oblogatorio!</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Codigo</mat-label>
+      <input matInput type="text" placeholder="Codigo" formControlName="code" />
+      <mat-error *ngIf="couponForm.get('code')?.hasError('required')"
+        >Este campo es oblogatorio!</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Descuento %</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Descuento"
+        formControlName="discount"
+      />
+      <mat-error *ngIf="couponForm.get('discount')?.hasError('required')"
+        >Este campo es oblogatorio!</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Fecha de expiracion</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="expirationDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="couponForm.get('expirationDate')?.hasError('required')"
+        >Este campo es oblogatorio!</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Añadir cupon
+    </button>
+  </form>
+</div>

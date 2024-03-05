@@ -1,0 +1,34 @@
+<div class="ordered-product-container">
+  <div
+    class="ordered-product"
+    *ngFor="let product of orderedProductDetailsList"
+  >
+    <div class="product-info">
+      <div class="product-image">
+        <img [src]="product.processedImg" alt="product-image" />
+      </div>
+      <div class="product-details">
+        <div class="item-row">
+          <div class="item-name">
+            {{ product.name }}
+          </div>
+          <div class="item-price">
+            Precio {{ product.productPrice | currency }}
+          </div>
+          <div class="item-quantity">Cantidad {{ product.quantity }}</div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          routerLink="/customer/review/{{ product.id }}"
+        >
+          Hacer una calificacion
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="total-price">Total: {{ totalAmount | currency }}</div>
+</div>

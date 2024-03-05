@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Preguntas frecuentes</h2>
+
+  <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Pregunta</mat-label>
+      <textarea
+        matInput
+        placeholder="Pregunta"
+        formControlName="question"
+      ></textarea>
+      <mat-error *ngIf="FAQForm.get('question')?.hasError('required')"
+        >Este campo es obligatorio!</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Respuesta</mat-label>
+      <textarea
+        matInput
+        placeholder="Respuesta"
+        formControlName="answer"
+      ></textarea>
+      <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')"
+        >Este campo es obligatorio!</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Subir pregunta frecuente</button>
+  </form>
+</div>
