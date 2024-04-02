@@ -32,7 +32,7 @@ export class PostProductFaqComponent {
     postFAQ(){
       this.adminService.postFAQ(this.productId, this.FAQForm.value).subscribe(res =>{
         if(res.id != null){
-          this.snackBar.open('FAQ Posted Successfully!', 'Close', {
+          this.snackBar.open('Pregusta posteada correctamente', 'Cerrar', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');

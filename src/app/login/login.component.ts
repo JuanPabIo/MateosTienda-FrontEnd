@@ -50,7 +50,7 @@ export class LoginComponent {
         }
       },
       (error) => {
-        this.snackBar.open('Bad credentials', 'ERROR', { duration: 5000 });
+        this.snackBar.open('Los datos ingresados son incorrectos', 'Cerrar', { duration: 5000 });
       }
     );
   }

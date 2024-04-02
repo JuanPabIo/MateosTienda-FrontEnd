@@ -64,7 +64,7 @@ export class PostProductComponent {
 
         this.adminService.addProduct(formData).subscribe((res) =>{
           if (res.id != null) {
-            this.snackBar.open('Product Posted Successfully!', 'Close', {
+            this.snackBar.open('Producto creado correctamente', 'Cerrar', {
               duration: 5000
             });
             this.router.navigateByUrl('/admin/dashboard');

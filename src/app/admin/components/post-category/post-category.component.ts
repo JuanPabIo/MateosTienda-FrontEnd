@@ -31,7 +31,7 @@ export class PostCategoryComponent {
     if(this.categoryForm.valid){
       this.adminService.addCategory(this.categoryForm.value).subscribe((res) =>{
         if (res.id != null) {
-          this.snackBar.open('Category Posted Successfully!', 'Close', {
+          this.snackBar.open('Categoria creada exitosamente', 'Cerrar', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');

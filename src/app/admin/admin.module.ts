@@ -30,7 +30,7 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     PostProductFaqComponent,
     UpdateProductComponent,
     AnalyticsComponent,
-    OrderByStatusComponent
+    OrderByStatusComponent,
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -51,12 +52,12 @@ export class DashboardComponent {
     this.adminService.deleteProduct(productId).subscribe((res)=>{
       console.log(res);
       if(res == null){
-        this.snackBar.open('Product Deleted Successfully!', 'Close', {
+        this.snackBar.open('Producto eliminado exitosamente', 'Cerrar', {
           duration: 5000
         });
         this.getAllProducts();
       }else{
-        this.snackBar.open(res.message, 'Close', {
+        this.snackBar.open(res.message, 'Cerrar', {
           duration: 5000,
           panelClass: 'error-snackbar'
         });

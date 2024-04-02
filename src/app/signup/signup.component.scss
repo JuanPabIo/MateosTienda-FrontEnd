@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 92.5vh;
+  margin-top: -25px;
 }
 
 .logo {
@@ -13,9 +14,9 @@
 mat-card {
   max-width: 400px;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   border: solid 1.5px;
-  border-radius: 10px;
+  border-radius: 8px;
 
   @media screen and (max-width: 500px) {
     max-width: 90%;
@@ -25,7 +26,7 @@ mat-card {
 mat-card-title {
   text-align: center;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 form {
@@ -36,7 +37,7 @@ form {
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 button {
@@ -63,4 +64,7 @@ button {
 .text{
   color: #ff0000;
 }
-
+mat-error {
+  margin-top: 5px; 
+  display: block; 
+}

@@ -28,22 +28,11 @@ interface SidenavToggle{
         )
       ])
     ]),
-    trigger('rotate',[
-      transition(':enter',[
-        animate('1000ms',
-          keyframes([
-            style({transform: 'rotate(0deg)', offset: '0'}),
-            style({transform: 'rotate(2turn)', offset: '1'})
-          ])
-        )
-      ])
-    ])
   ]
 })
 export class SidenavComponent implements OnInit {
   isCustomerLoggedIn: boolean = UserStorageService.isCustomerLoggedIn();
   isAdminLoggedIn: boolean = UserStorageService.isAdminLoggedIn();
-
   ruta: string = "assets/img/logo/bars-solid.svg";
   @Output() onToggleSideNav: EventEmitter<SidenavToggle> = new EventEmitter();
   collapsed = false;
@@ -54,7 +43,8 @@ export class SidenavComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInt(): void {
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
     this.router.events.subscribe((event) => {
       this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
       this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
@@ -70,17 +60,16 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.screenWidth = window.innerWidth;
+  handleNavigation(routeLink: string) {
+    if (routeLink === 'logout') {
+      this.logout();
+    } else {
+      this.router.navigate([routeLink]);
+    }
   }
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
-    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth });
-  }
-
-  closeSidenav(): void {
-    this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
 
@@ -96,5 +85,10 @@ export class SidenavComponent implements OnInit {
       this.collapsed = false;
       this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth });
     }
+  }
+
+  logout() { 
+    UserStorageService.signOut();
+    this.router.navigateByUrl('login');
   }
 }

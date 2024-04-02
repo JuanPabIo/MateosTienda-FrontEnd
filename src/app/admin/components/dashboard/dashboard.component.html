@@ -1,52 +1,46 @@
 <form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
     <mat-form-field appearance="outline" class="search-input">
-        <mat-label>Enter Keyword to search</mat-label>
+        <mat-label>¿Qué estás buscando?</mat-label>
         <input matInput formControlName="title">
-
         <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
             <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
-
 </form>
-
-
 <div class="product-list">
-
-
-
-
     <mat-card class="product-card" *ngFor="let product of products">
-        <div class="product-image">
-            <img [src]="product.processedImg" alt="product-image">
-        </div>
         <div class="product-details">
-            <h2 class="product-name">{{ product.name }}</h2>
-            <p class="product-description">{{ product.description }}</p>
-
+            <div class="product-image">
+                <img [src]="product.processedImg" alt="product-image">
+            </div>
             <mat-divider></mat-divider>
+            <h2 class="product-name">{{ product.name }}</h2>
             <div class="product-info">
+                <p class="product-description">{{ product.description }}</p>
                 <div class="info-row">
-                    <span class="info-label">Precio:</span>
-                    <span class="info-value">${{ product.price }}</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Categoria:</span>
-                    <span class="info-value">{{ product.categoryName }}</span>
+                    <span class="info-value price">$ {{ product.price }}</span>
                 </div>
             </div>
-
             <mat-divider></mat-divider>
             <div class="actions">
-                <button mat-raised-button color="primary" class="update-button"
-                    [routerLink]="'/admin/faq/' + product.id">Preguntas</button>
-                <button mat-raised-button color="accent" class="update-button"
-                    [routerLink]="'/admin/product/' + product.id">Actualizar</button>
-                <button mat-raised-button color="warn" class="delete-button" (click)="deleteProduct(product.id)">
-                    Borrar
+                <button mat-icon-button title="Preguntas" class="update-button" [routerLink]="'/admin/faq/' + product.id">
+                    <mat-icon>help_outline</mat-icon>
+                </button>
+                <button mat-icon-button title="Actualizar" class="update-button" [routerLink]="'/admin/product/' + product.id"> 
+                    <mat-icon>update</mat-icon>
+                </button>
+                <button mat-icon-button title="Borrar" class="delete-button" (click)="deleteProduct(product.id)">
+                    <mat-icon>delete_outline</mat-icon>
                 </button>
             </div>
+            
         </div>
     </mat-card>
-
 </div>
+
+                    
+
+                    
+                    
+
+                    

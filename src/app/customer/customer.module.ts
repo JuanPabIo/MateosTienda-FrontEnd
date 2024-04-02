@@ -14,6 +14,8 @@ import { ViewOrderedProductsComponent } from './components/view-ordered-products
 import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
 import { ViewProductDetailComponent } from './components/view-product-detail/view-product-detail.component';
 import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.component';
+import { ProlifeComponent } from './components/prolife/prolife.component';
+import { CarouselModule } from '../carousel/carousel.module';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.
     ReviewOrderedProductComponent,
     ViewProductDetailComponent,
     ViewWishlistComponent,
+    ProlifeComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,8 @@ import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DemoAngularMaterailModule
+    DemoAngularMaterailModule,
+    CarouselModule
   ]
 })
 export class CustomerModule { }

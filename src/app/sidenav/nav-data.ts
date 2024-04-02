@@ -1,88 +1,88 @@
 export const navbarData = [
   {
     routeLink: 'home',
-    icon: 'fal fa-home',
+    icon: 'fas fa-home',
     label: 'INICIO',
   },
   {
     routeLink: 'login',
-    icon: 'far fa-user',
+    icon: 'fas fa-sign-in-alt fa-lg',
     label: 'INICIAR SESION',
   },
   {
     routeLink: 'signup',
-    icon: 'far fa-user-plus',
+    icon: 'fas fa-user-plus',
     label: 'REGISTRATE',
   },
 ];
 
 export const loginData = [
   {
-    routeLink: 'dashboard',
-    icon: 'fal fa-home',
+    routeLink: 'customer/dashboard',
+    icon: 'fas fa-home',
     label: 'INICIO',
   },
   {
-    routeLink: 'cart',
-    icon: 'fal fa-home',
-    label: 'CARIITO',
+    routeLink: 'customer/cart',
+    icon: 'fas fa-shopping-cart',
+    label: 'CARRITO',
   },
   {
-    routeLink: 'my_orders',
-    icon: 'fal fa-home',
+    routeLink: 'customer/my_orders',
+    icon: 'fas fa-truck',
     label: 'ORDENES',
   },
   {
-    routeLink: 'wishlist',
-    icon: 'fal fa-home',
+    routeLink: 'customer/wishlist',
+    icon: 'fas fa-heart',
     label: 'FAVORITOS',
   },
   {
-    routeLink: 'cart',
-    icon: 'fal fa-home',
+    routeLink: 'customer/prolife',
+    icon: 'fas fa-user',
+    label: 'PERFIL',
+  },
+  {
+    routeLink: 'logout',
+    icon: 'fas fa-sign-out-alt',
     label: 'SALIR',
   },
 ];
 
 export const adminData = [
   {
-    routeLink: 'dashboard',
-    icon: 'fal fa-home',
+    routeLink: 'admin/dashboard',
+    icon: 'fas fa-home',
     label: 'INICIO',
   },
   {
-    routeLink: 'category',
-    icon: 'fal fa-home',
+    routeLink: 'admin/category',
+    icon: 'fas fa-folder',
     label: 'CATEGORIAS',
   },
   {
-    routeLink: 'product',
-    icon: 'fal fa-home',
+    routeLink: 'admin/product',
+    icon: 'fas fa-box-open',
     label: 'PRODUCTOS',
   },
   {
-    routeLink: 'post-coupon',
-    icon: 'fal fa-home',
-    label: 'CREAR CUPON',
-  },
-  {
-    routeLink: 'coupons',
-    icon: 'fal fa-home',
+    routeLink: 'admin/coupons',
+    icon: 'fas fa-ticket-alt',
     label: 'CUPONES',
   },
   {
-    routeLink: 'orders',
-    icon: 'fal fa-home',
+    routeLink: 'admin/orders',
+    icon: 'fas fa-shopping-cart',
     label: 'ORDENES',
   },
   {
-    routeLink: 'analytics',
-    icon: 'fal fa-home',
+    routeLink: 'admin/analytics',
+    icon: 'fas fa-chart-bar fa-lg', 
     label: 'ESTADISTICAS',
   },
   {
-    routeLink: 'cart',
-    icon: 'fal fa-home',
+    routeLink: 'logout',
+    icon: 'fas fa-sign-out-alt',
     label: 'SALIR',
   },
 ];

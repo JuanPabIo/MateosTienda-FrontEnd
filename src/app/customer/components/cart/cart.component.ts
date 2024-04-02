@@ -56,14 +56,14 @@ export class CartComponent {
 
     increaseQuantity(productId: any){
       this.customerService.increaseProductQuantity(productId).subscribe(res =>{
-        this.snackbar.open('Product quantity increased.', 'Close', { duration: 5000 });
+        this.snackbar.open('Se ha agregado un profucto mas', 'Cerrar', { duration: 5000 });
         this.getCart();
       })
     }
 
     decreaseQuantity(productId: any){
       this.customerService.decreaseProductQuantity(productId).subscribe(res =>{
-        this.snackbar.open('Product quantity decreased.', 'Close', { duration: 5000 });
+        this.snackbar.open('Se ha restado un producto', 'Cerrar', { duration: 5000 });
         this.getCart();
       })
     }
@@ -72,4 +72,10 @@ export class CartComponent {
       this.dialog.open(PlaceOrderComponent);
     }
 
+    // removeItem(productId: any){
+    //   this.customerService.removeItemFromCart(productId).subscribe(res => {
+    //     this.snackbar.open('Item removed from cart.', 'Close', { duration: 5000 });
+    //     this.getCart();
+    //   })
+    // }
 }

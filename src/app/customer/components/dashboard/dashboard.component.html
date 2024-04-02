@@ -1,48 +1,34 @@
 <form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
     <mat-form-field appearance="outline" class="search-input">
-        <mat-label>¿Que estas buscando?</mat-label>
+        <mat-label>¿Qué estás buscando?</mat-label>
         <input matInput formControlName="title">
-
         <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
             <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
-
 </form>
-
-
-<div class="product-list">
-
-
-
-
-    <mat-card class="product-card" *ngFor="let product of products">
-        <div class="product-image">
-            <img [src]="product.processedImg" alt="product-image">
+<ng-container *ngIf="!searchPerformed">
+    <app-carousel [images]="images" [autoSlide]="true"></app-carousel>
+</ng-container><div class="product-list">
+    <mat-card class="product-card" *ngFor="let product of products" (mouseenter)="toggleFavoriteIcon(product.id, true)" (mouseleave)="toggleFavoriteIcon(product.id, false)">
+        <div class="favorite-icon" 
+             [class.favorite]="product.inWishlist" 
+             *ngIf="product.showFavoriteIcon" 
+             (click)="addToFavorites(product)">
+            <i class="fas fa-heart"></i>
         </div>
-        <div class="product-details">
-            <h2 class="product-name" routerLink="/customer/product/{{product.id}}">{{ product.name }}</h2>
-            <p class="product-description">{{ product.description }}</p>
-
-            <mat-divider></mat-divider>
-            <div class="product-info">
-                <div class="info-row">
-                    <span class="info-label">Precio:</span>
-                    <span class="info-value">${{ product.price }}</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Categoria:</span>
-                    <span class="info-value">{{ product.categoryName }}</span>
-                </div>
+        <div class="product-details" routerLink="/customer/product/{{product.id}}">
+            <div class="product-image">
+                <img [src]="product.processedImg" alt="product-image">
             </div>
-
             <mat-divider></mat-divider>
-            <div class="actions">
-                <button mat-raised-button color="primary" class="update-button" (click)="addToCart(product.id)">
-                    Añadir al carrito
-                </button>
+            <h2 class="product-name">{{ product.name }}</h2>
+            <div class="product-info">
+                <p class="product-description">{{ product.description }}</p>
+                <div class="info-row">
+                    <span class="info-value price">$ {{ product.price }}</span>
+                </div>
             </div>
         </div>
     </mat-card>
-
 </div>

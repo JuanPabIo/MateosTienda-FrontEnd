@@ -32,12 +32,12 @@ export class PostCouponComponent {
       if(this.couponForm.valid){
         this.adminService.addCoupon(this.couponForm.value).subscribe(res =>{
           if(res.id != null){
-            this.snackBar.open('Coupon Posted Successfully!', 'Close', {
+            this.snackBar.open('Cupon creado exitosamente', 'Cerrar', {
               duration: 5000
             });
             this.router.navigateByUrl('/admin/dashboard');
           }else{
-            this.snackBar.open(res.message, 'Close', {
+            this.snackBar.open(res.message, 'Cerrar', {
               duration: 5000,
               panelClass: 'error-snackbar'
             });

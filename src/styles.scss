@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; // o cualquier otro tema
 
 * {
     margin: 0;
@@ -9,4 +10,12 @@
 body {
     position: relative;
     font-family: 'Roboto', sans-serif;
+}
+
+
+:host ::ng-deep .mat-tooltip {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    background-color: #000;
+    color: #fff;
 }

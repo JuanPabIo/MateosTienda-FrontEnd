@@ -1,10 +1,9 @@
 <div class="container">
-  <h2>Añadir proudicto</h2>
+  <h2>Añadir producto</h2>
 
-  <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+  <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="form">
     <div class="file-upload-container">
       <label class="file-upload-label">
-        <span>Seleccionar archivo</span>
         <input
           type="file"
           id="fileInput"
@@ -12,6 +11,7 @@
           hidden
         />
         <mat-icon>attach_file</mat-icon>
+        <span>Seleccionar archivo</span>
       </label>
 
       <div *ngIf="selectedFile" class="image-preview">
@@ -26,7 +26,7 @@
     </div>
 
     <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Seleccionar categoria</mat-label>
+      <mat-label>Seleccionar categoría</mat-label>
       <mat-select formControlName="categoryId" name="categoryId">
         <mat-option
           *ngFor="let category of listOfCategories"
@@ -62,11 +62,12 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Descripcion</mat-label>
+      <mat-label>Descripción</mat-label>
       <textarea
         matInput
-        placeholder="Descripcion"
+        placeholder="Descripción"
         formControlName="description"
+        rows="4"
       ></textarea>
       <mat-error *ngIf="productForm.get('description')?.hasError('required')"
         >Este campo es obligatorio!</mat-error

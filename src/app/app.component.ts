@@ -18,14 +18,8 @@ export class AppComponent {
  isSideNavCollapsed = false;
   screenWidth = 0;
 
-  //logout() {
-  //UserStorageService.signOut();
-  //this.router.navigateByUrl('login');
-  //}
-
   onToggleSideNav(data: SidenavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
-  }
-
+  }  
 }

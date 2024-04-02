@@ -1,73 +1,48 @@
-<div class="container">
-    <mat-card>
-        <mat-card-content>
+<div class="container">  
+  <mat-card>
+    <mat-card-content>
+      <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+        <ng-container matColumnDef="trackingId">
+          <th mat-header-cell *matHeaderCellDef>ID Orden</th>
+          <td mat-cell *matCellDef="let order">{{ order.trackingId }}</td>
+        </ng-container>
 
-            <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>
+          <td mat-cell *matCellDef="let order">
+            <a [routerLink]="['/admin/user-profile', order.userId]">{{ order.userName }}</a>
+          </td>
+        </ng-container>
 
-                <ng-container matColumnDef="trackingId">
-                    <th mat-header-cell *matHeaderCellDef>ID Orden</th>
-                    <td mat-cell *matCellDef="let order">{{ order.trackingId }}</td>
-                </ng-container>
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let order" class="bold-cell">{{ order.amount }}</td>
+        </ng-container>
 
-                <ng-container matColumnDef="userName">
-                    <th mat-header-cell *matHeaderCellDef>Nombre de Usuario</th>
-                    <td mat-cell *matCellDef="let order">{{ order.userName }}</td>
-                </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Fecha</th>
+          <td mat-cell *matCellDef="let order">{{ order.date | date: 'dd/MM/yyyy' }}</td>
+        </ng-container>
 
-                <ng-container matColumnDef="amount">
-                    <th mat-header-cell *matHeaderCellDef>Total</th>
-                    <td mat-cell *matCellDef="let order" class="bold-cell">{{ order.amount }}</td>
-                </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let order">{{ order.orderStatus }}</td>
+        </ng-container>
 
-                <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
-                    <td mat-cell *matCellDef="let order">{{ order.orderDescription }}</td>
-                </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Acción</th>
+          <td mat-cell *matCellDef="let order">
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Cambiar Estado</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="changeOrderStatus(order.id, 'Shipped')">Enviado</button>
+              <button mat-menu-item (click)="changeOrderStatus(order.id, 'Delivered')">Entregado</button>
+            </mat-menu>
+          </td>
+        </ng-container>
 
-                <ng-container matColumnDef="address">
-                    <th mat-header-cell *matHeaderCellDef>Direccion</th>
-                    <td mat-cell *matCellDef="let order">{{ order.address }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef>Fecha</th>
-                    <td mat-cell *matCellDef="let order">{{ order.date | date: 'dd/MM/yyyy' }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef>Estado</th>
-                    <td mat-cell *matCellDef="let order">{{ order.orderStatus }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef>Accion</th>
-                    <td mat-cell *matCellDef="let order">
-                        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Accion</button>
-                        <mat-menu #menu="matMenu">
-                            <span>
-                                <span>
-                                    <button mat-menu-item (click)="changeOrderStatus(order.id, 'Shipped')">Shipped</button>
-                                </span>
-                                <span>
-                                    <button mat-menu-item
-                                    (click)="changeOrderStatus(order.id, 'Delivered')">Delivered</button>
-                                </span>
-                            </span>
-                        </mat-menu>
-                    </td>
-                </ng-container>
-
-                <tr mat-header-row
-                *matHeaderRowDef="['trackingId', 'userName', 'amount', 'description', 'address', 'date','status','action']">
-            </tr>
-
-            <tr mat-row
-                    *matRowDef="let row; columns: ['trackingId', 'userName', 'amount', 'description', 'address', 'date','status','action']">
-                </tr>
-
-                </table>
-
-        </mat-card-content>
-
-    </mat-card>
+        <tr mat-header-row *matHeaderRowDef="['trackingId', 'userName', 'amount', 'date', 'status', 'action']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['trackingId', 'userName', 'amount', 'date', 'status', 'action']"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
 </div>

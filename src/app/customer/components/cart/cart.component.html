@@ -6,27 +6,18 @@
           <img [src]="item.processedImg" alt="product-image" />
         </div>
         <div class="product-details">
-          <div class="item-row">
-            <div class="item-name" [ngClass]="{ highlight: item.highlighted }">
-              {{ item.productName }}
-            </div>
-            <div class="item-price">{{ item.price | currency }}</div>
-            <div class="quantity-controls">
-              <button
-                mat-icon-button
-                [disabled]="item.quantity == 1"
-                (click)="decreaseQuantity(item.productId)"
-              >
-                <mat-icon>remove_circle_outline</mat-icon>
-              </button>
-              <span class="quantity">{{ item.quantity }}</span>
-              <button
-                mat-icon-button
-                (click)="increaseQuantity(item.productId)"
-              >
-                <mat-icon>add_circle_outline</mat-icon>
-              </button>
-            </div>
+          <div class="item-name" [ngClass]="{ highlight: item.highlighted }">
+            {{ item.productName }}
+          </div>
+          <div class="item-price">{{ item.price | currency }}</div>
+          <div class="quantity-controls">
+            <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button mat-icon-button (click)="increaseQuantity(item.productId)">
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
           </div>
         </div>
       </div>
@@ -35,33 +26,22 @@
     <div class="total-price">Subtotal {{ order.totalAmount | currency }}</div>
     <div class="total-price">Total {{ order.amount | currency }}</div>
     <div class="total-price" *ngIf="order.couponName != null">
-      Usaste el cupon {{ order.couponName }}
+      Has utilizado el cupón: {{ order.couponName }}
     </div>
     <div>
-      <button mat-raised-button color="primary" (click)="placeOrder()">
-        Hacer orden
-      </button>
+      <button mat-raised-button color="primary" (click)="placeOrder()">Comprar ahora</button>
     </div>
   </div>
 
   <div class="container" *ngIf="order.couponName == null">
     <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()">
       <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Codigo</mat-label>
-        <input
-          matInput
-          type="text"
-          placeholder="Codigo"
-          formControlName="code"
-        />
-        <mat-error *ngIf="couponForm.get('code')?.hasError('required')"
-          >Este campo es requerido.</mat-error
-        >
+        <mat-label>Código del cupón</mat-label>
+        <input matInput type="text" placeholder="Código" formControlName="code" />
+        <mat-error *ngIf="couponForm.get('code')?.hasError('required')">Este campo es requerido.</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">
-        Aplicar cupon
-      </button>
+      <button mat-raised-button color="primary" type="submit">Aplicar cupón</button>
     </form>
   </div>
 </div>
@@ -69,9 +49,6 @@
 <ng-template #emptyCart>
   <div class="empty-cart">
     <mat-icon class="icon">remove_shopping_cart</mat-icon>
-    <span
-      >Tu carrito esta vacio. Explora la varidad de articulo que hay
-      disponibles</span
-    >
+    <span>Tu carrito está vacío. Explora la variedad de artículos disponibles.</span>
   </div>
 </ng-template>

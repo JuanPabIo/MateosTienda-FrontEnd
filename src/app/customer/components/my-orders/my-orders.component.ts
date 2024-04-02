@@ -7,7 +7,7 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./my-orders.component.scss']
 })
 export class MyOrdersComponent {
-
+  displayedColumns: string[] = ['trackingId', 'amount', 'date', 'status', 'action'];
   myOrders:any;
 
   constructor(private customerService: CustomerService){}

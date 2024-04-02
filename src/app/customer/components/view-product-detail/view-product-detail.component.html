@@ -1,50 +1,69 @@
-<div class="center-container" *ngIf="product">
-    <div class="product-card">
-        <div class="product-image">
-            <img [src]="product.processedImg" alt="{{ product.name }} Image">
-        </div>
-        <div class="product-details">
+<div class="product-detail-container" *ngIf="product">
+    <div class="product-image" (click)="toggleImageModal(product.processedImg)">
+        <img [src]="product.processedImg" alt="{{ product.name }} Image">
+    </div>
+    <div class="product-details">
+        <div class="price-wishlist">
             <h2>{{ product.name }}</h2>
-            <p class="description">{{ product.description }}</p>
-            <p class="price">Precio: ${{ product.price }}</p>
-            <p class="category">Categoria: {{ product.categoryName }}> 
-                <mat-icon  class="heart-icon" (click)="addToWishlist()"
-                style="cursor: pointer; margin-top: 10px;">favorite_border</mat-icon>
-            </p>
+            <mat-icon class="heart-icon" 
+          (click)="addToWishlist()" 
+          (mouseenter)="toggleFavoriteIcon(true)" 
+          (mouseleave)="toggleFavoriteIcon(false)" 
+          style="cursor: pointer;">
+    {{ product.inWishlist ? 'favorite' : 'favorite_border' }}
+</mat-icon>
+
+        </div>
+        <p class="description">{{ product.description }}</p>
+        <p class="category">Categoría {{ product.categoryName }}</p>
+        <p class="price">$ {{ product.price }}</p>
+    </div>
+    <div class="pay-foms">
+        <h1><i class="material-icons">payment</i> Métodos de pago</h1>
+        <h1><i class="material-icons">local_shipping</i> Envíos Seguros</h1>
+        <div class="button-container">
+            <button class="buy-now-button" (click)="placeOrder()">
+                <mat-icon>shopping_cart</mat-icon> Comprar
+            </button>
+        </div>
+        <div class="button-container">
+            <button (click)="addToCart(product.id)" class="add-to-cart-button">
+                <mat-icon>add_shopping_cart</mat-icon> Añadir 
+            </button>
         </div>
     </div>
-
 </div>
 
-<h1 class="section-heading" *ngIf="reviews.length >0">Calificaion de Clientes</h1>
+<div *ngIf="showImageModal" class="image-modal" (click)="closeImageModal()">
+    <div class="modal-content">
+        <span class="close" (click)="closeImageModal()">&times;</span>
+        <img [src]="expandedImage" alt="Expanded Image">
+    </div>
+</div>
+
+<h1>Productos similares</h1>
+<h1 class="section-heading" *ngIf="reviews.length > 0">Calificación de Clientes</h1>
 <div *ngIf="reviews" class="review-list">
-    <div class="center-container">
-        <div *ngFor="let review of reviews" class="review-card">
-            <div class="review-image">
-                <img [src]="review.processedImg" *ngIf="review.processedImg" alt="{{ review.description }} Image" class="small-image">
-            </div>
-            <div class="review-details">
-                <h2>{{ review.description }}</h2>
-                <div class="details-row">
-                    <p class="rating">Calificacion: {{ review.rating }} -</p>
-                    <p class="username">Usuario: {{ review.username }}</p>
-                </div>
+    <div class="review-card" *ngFor="let review of reviews">
+        <div class="review-image">
+            <img [src]="review.processedImg" *ngIf="review.processedImg" alt="{{ review.description }} Image" class="small-image">
+        </div>
+        <div class="review-details">
+            <h3>{{ review.description }}</h3>
+            <div class="details-row">
+                <p class="rating">Calificación: {{ review.rating }}</p>
+                <p class="username">Usuario: {{ review.username }}</p>
             </div>
         </div>
     </div>
-
 </div>
 
-<h1 class="section-heading" *ngIf="FAQS.length >0">Preguntas frecuentes</h1>
+<h1 class="section-heading" *ngIf="FAQS.length > 0">Preguntas frecuentes</h1>
 <div *ngIf="FAQS" class="faq-list">
-    <div class="center-container">
-        <div *ngFor="let faq of FAQS" class="faq-card">
-            <div class="faq-details">
-                <p class="question">Preguntas: </p>
-                <p class="question-text">{{ faq.question }}</p>
-                <p class="answer">Respuetas: </p>
-                <p class="answer-text">{{ faq.answer }}</p>
-            </div>
+    <div class="faq-card" *ngFor="let faq of FAQS">
+        <div class="faq-details">
+            <p class="question">{{ faq.question }}</p>
+            <p class="answer">{{ faq.answer }}</p>
         </div>
     </div>
 </div>

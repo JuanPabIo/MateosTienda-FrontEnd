@@ -12,6 +12,7 @@
             formControlName="email"
             placeholder="Correo Electronico"
             required
+            (keydown.enter)="onSubmit()"
           />
           <mat-error
             *ngIf="
@@ -30,6 +31,7 @@
             formControlName="password"
             placeholder="Contraseña"
             required
+            (keydown.enter)="onSubmit()"
           />
 
           <button
@@ -55,7 +57,7 @@
         <button
           mat-raised-button
           color="primary"
-          type="submit"
+          type="submit" 
           [disabled]="loginForm.invalid"
           (click)="onSubmit()"
         >
@@ -70,10 +72,6 @@
       </button>
     </mat-card-actions>
     <mat-card-actions>
-      <button mat-raised-button color="blue" class="gbutton" type="submit" (click)="login()">
-        <img [src]="gimg" width="30" height="30"/>
-       Iniciar Sesion Con Google
-      </button>
     </mat-card-actions>
   </mat-card>
 </div>

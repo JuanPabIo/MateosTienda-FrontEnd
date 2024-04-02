@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Perfil de Usuario</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="profile-info">
+                <img [src]="user.photoUrl" alt="Foto de perfil" class="profile-picture">
+                <div class="user-details">
+                    <p><strong>Nombre:</strong> {{ user.name }}</p>
+                    <p><strong>Correo Electrónico:</strong> {{ user.email }}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

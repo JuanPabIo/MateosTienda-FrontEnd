@@ -12,6 +12,7 @@ import { TrackOrderComponent } from './track-order/track-order.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { BodyComponent } from './body/body.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { BodyComponent } from './body/body.component';
     SignupComponent,
     TrackOrderComponent,
     SidenavComponent,
-    BodyComponent
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,7 @@ import { BodyComponent } from './body/body.component';
     ReactiveFormsModule,
     HttpClientModule,
     OAuthModule.forRoot(),
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

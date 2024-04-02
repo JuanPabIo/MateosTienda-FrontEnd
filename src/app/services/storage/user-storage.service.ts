@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const TOKEN = 'ecom-token';
 const USER = 'ecom-user';
+const FAVORITES_KEY = 'ecom-favorites';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserStorageService {
 
+  private cartItemsSubject = new BehaviorSubject<number>(0);
+  cartItems$ = this.cartItemsSubject.asObservable();
+  
   constructor() { }
 
-  public saveToken(token: string): void{
+  public saveToken(token: string): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.setItem(TOKEN, token);
   }
 
-  public saveUser(user): void{
+  public saveUser(user): void {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
+  }
+
+  public saveFavorites(favorites: any[]): void {
+    window.localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  }
+
+  public getFavorites(): any[] {
+    const favoritesString = window.localStorage.getItem(FAVORITES_KEY);
+    return favoritesString ? JSON.parse(favoritesString) : [];
   }
 
   static getToken(): string {
@@ -25,43 +39,36 @@ export class UserStorageService {
   }
 
   static getUser(): any {
-    return JSON.parse(localStorage.getItem(USER));
+    const userString = localStorage.getItem(USER);
+    return userString ? JSON.parse(userString) : null;
   }
 
   static getUserId(): string {
     const user = this.getUser();
-    if( user == null){
-      return '';
-    }
-    return user.userId;
+    return user ? user.userId : '';
   }
 
   static getUserRole(): string {
     const user = this.getUser();
-    if( user == null){
-      return '';
-    }
-    return user.role;
+    return user ? user.role : '';
   }
 
   static isAdminLoggedIn(): boolean {
-    if(this.getToken === null){
-      return false;
-    }
-    const role: string = this.getUserRole();
-    return role == 'ADMIN';
+    const token = this.getToken();
+    return token !== null && this.getUserRole() === 'ADMIN';
   }
 
   static isCustomerLoggedIn(): boolean {
-    if(this.getToken === null){
-      return false;
-    }
-    const role: string = this.getUserRole();
-    return role == 'CUSTOMER';
+    const token = this.getToken();
+    return token !== null && this.getUserRole() === 'CUSTOMER';
   }
 
   static signOut(): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
+  }
+
+  updateCartItemCount(count: number) {
+    this.cartItemsSubject.next(count);
   }
 }

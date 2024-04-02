@@ -7,8 +7,13 @@
             <form [formGroup]="signupForm">
                 <mat-form-field appearance="outline">
                     <mat-label>Nombre</mat-label>
-                    <input matInput formControlName="name" placeholder="Nombre" required>
-
+                    <input 
+                        matInput 
+                        formControlName="name" 
+                        placeholder="Nombre" 
+                        required
+                        (keydown.enter)="onSubmit()"
+                    />
                     <mat-error *ngIf="signupForm.get('name').invalid && signupForm.get('name').touched">
                         Por favor, ingresa un nombre valido.
                     </mat-error>
@@ -16,8 +21,13 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Correo Electronico</mat-label>
-                    <input matInput formControlName="email" placeholder="Correo Electronico" required>
-
+                    <input 
+                        matInput 
+                        formControlName="email" 
+                        placeholder="Correo Electronico" 
+                        required
+                        (keydown.enter)="onSubmit()"
+                    />
                     <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
                         Por favor, ingresa un correo electronico valido.
                     </mat-error>
@@ -25,41 +35,58 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password"
-                        placeholder="Contraseña" required>
-
+                    <input 
+                        matInput 
+                        type="{{ hidePassword ? 'password' : 'text' }}" 
+                        formControlName="password"
+                        placeholder="Contraseña" 
+                        required
+                        (keydown.enter)="onSubmit()"
+                    />
                     <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
                     <mat-error *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
-                        Por favor, ingresa un contraseña valida.
+                        {{ getErrorMessage('password') }}
                     </mat-error>
                 </mat-form-field>
-
+                
                 <mat-form-field appearance="outline">
                     <mat-label>Confirma tu contraseña</mat-label>
-                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="confirmPassword"
-                        placeholder="Confirmacion" required>
-
+                    <input 
+                        matInput 
+                        type="{{ hidePassword ? 'password' : 'text' }}" 
+                        formControlName="confirmPassword"
+                        placeholder="Confirmación" 
+                        required
+                        (keydown.enter)="onSubmit()"
+                    />
                     <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
-                    <mat-error
-                        *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
-                        Por favor, ingresa un contraseña valida.
+                    <mat-error *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
+                        {{ getErrorMessage('confirmPassword') }}
                     </mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid"
-                (click)="onSubmit()">Regitrarse</button>
+                <button 
+                    mat-raised-button 
+                    color="primary" 
+                    type="submit"  
+                    [disabled]="signupForm.invalid"
+                    (click)="onSubmit()"
+                >
+                    Registrarse
+                </button>
+
                 <p></p>
+
                 <mat-card-actions>
                     <button mat-button color="accent" routerLink="/login">
                       <p class="text">¿Ya tienes una cuenta? Inicia Sesion</p>
                     </button>
-                  </mat-card-actions>
+                </mat-card-actions>
             </form>
         </mat-card-content>
     </mat-card>
-    
 </div>

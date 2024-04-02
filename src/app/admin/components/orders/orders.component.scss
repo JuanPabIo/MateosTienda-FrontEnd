@@ -5,56 +5,67 @@
     display: flex;
     justify-content: center;
     padding-top: 50px;
-}
-
-/* Style the card */
-mat-card {
+  }
+  
+  /* Style the card */
+  mat-card {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Style the table */
-table {
+  }
+  
+  /* Style the table */
+  table {
     width: 100%;
-}
-
-/* Style the table header */
-th.mat-header-cell {
+  }
+  
+  /* Style the table header */
+  th.mat-header-cell {
     font-weight: bolder;
     color: #003973;
     padding: 10px;
-}
-
-/* Style the table rows */
-td.mat-cell,
-td.bold-cell {
+  }
+  
+  /* Style the table rows */
+  td.mat-cell,
+  td.bold-cell {
     padding: 10px;
-}
-
-/* Add a bold style to specific cells */
-td.bold-cell {
+  }
+  
+  /* Add a bold style to specific cells */
+  td.bold-cell {
     font-weight: bold;
-}
-
-/* Add elevation to the table */
-.mat-elevation-z8 {
+  }
+  
+  /* Add elevation to the table */
+  .mat-elevation-z8 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Style the table rows on hover */
-.mat-row:hover {
+  }
+  
+  /* Style the table rows on hover */
+  .mat-row:hover {
     background-color: #f5f5f5;
-}
-
-/* Style the table header row */
-.mat-header-row {
+  }
+  
+  /* Style the table header row */
+  .mat-header-row {
     background-color: #f0f0f0;
-}
-
-/* Style the pagination footer (optional) */
-.mat-paginator {
+  }
+  
+  /* Style the pagination footer (optional) */
+  .mat-paginator {
     background-color: #f0f0f0;
     border-radius: 0 0 10px 10px;
     margin-top: 16px;
-}
+  }
+  
+  /* Style the link for user profile */
+  a {
+    color: #007bff; /* Update with your desired color code */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

@@ -10,9 +10,11 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { PostProductFaqComponent } from './components/post-product-faq/post-product-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { ProlifeComponent } from '../customer/components/prolife/prolife.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
+  { path: 'user-profile', component: ProlifeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
   { path: 'product', component: PostProductComponent },
