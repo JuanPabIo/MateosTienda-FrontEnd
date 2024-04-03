@@ -38,11 +38,6 @@ export const loginData = [
     label: 'FAVORITOS',
   },
   {
-    routeLink: 'customer/prolife',
-    icon: 'fas fa-user',
-    label: 'PERFIL',
-  },
-  {
     routeLink: 'logout',
     icon: 'fas fa-sign-out-alt',
     label: 'SALIR',

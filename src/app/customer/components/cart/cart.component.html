@@ -28,11 +28,12 @@
     <div class="total-price" *ngIf="order.couponName != null">
       Has utilizado el cupón: {{ order.couponName }}
     </div>
+    <p></p>
     <div>
       <button mat-raised-button color="primary" (click)="placeOrder()">Comprar ahora</button>
     </div>
   </div>
-
+<p></p>
   <div class="container" *ngIf="order.couponName == null">
     <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()">
       <mat-form-field appearance="outline" class="form-field">

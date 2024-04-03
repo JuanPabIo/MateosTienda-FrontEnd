@@ -15,9 +15,10 @@
                         (keydown.enter)="onSubmit()"
                     />
                     <mat-error *ngIf="signupForm.get('name').invalid && signupForm.get('name').touched">
-                        Por favor, ingresa un nombre valido.
+                        {{ getErrorMessage('name') }}
                     </mat-error>
                 </mat-form-field>
+                
 
                 <mat-form-field appearance="outline">
                     <mat-label>Correo Electronico</mat-label>
@@ -29,7 +30,7 @@
                         (keydown.enter)="onSubmit()"
                     />
                     <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
-                        Por favor, ingresa un correo electronico valido.
+                        {{ getErrorMessage('email') }}
                     </mat-error>
                 </mat-form-field>
 

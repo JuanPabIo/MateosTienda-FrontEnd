@@ -23,7 +23,7 @@
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef>Acción</mat-header-cell>
         <mat-cell *matCellDef="let myOrder">
-          <span *ngIf="myOrder.orderStatus == 'Pedidio'">
+          <span *ngIf="myOrder.orderStatus == 'Delivered'">
             <button mat-raised-button color="primary" type="submit" routerLink="/customer/ordered_products/{{myOrder.id}}">Reseña</button>
           </span>
         </mat-cell>

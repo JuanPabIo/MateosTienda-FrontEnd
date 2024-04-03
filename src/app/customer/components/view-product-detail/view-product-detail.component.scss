@@ -1,11 +1,11 @@
 .product-detail-container {
   display: flex;
-  flex-direction: column;  // Cambio a columna en pantallas pequeñas
+  flex-direction: column;  
   justify-content: space-between;
-  align-items: center;     // Centrado en el eje Y
+  align-items: center;     
   margin-bottom: 30px;
-  width: 100%;             // Ancho completo
-  padding: 0 20px;         // Añadido padding lateral
+  width: 100%;            
+  padding: 0 20px;        
 
   .image-container {
     display: flex;
@@ -16,7 +16,7 @@
 
 
 .pay-foms {
-  width: 100%;             // Ancho completo
+  width: 100%;             
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -30,11 +30,11 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
-  max-width: 100%;         // Ancho máximo
+  max-width: 100%;        
 }
 
 .product-image img {
-  max-width: 100%;         // Imagen adaptativa al contenedor
+  max-width: 100%;         
   height: auto;
   border-radius: 8px;
   cursor: pointer;
@@ -42,8 +42,8 @@
 
 .product-details {
   flex: 1;
-  margin-top: 20px;        // Añadido margen superior
-  width: 100%;             // Ancho completo
+  margin-top: 20px;      
+  width: 100%;             
 }
 
 .product-details h2 {
@@ -95,7 +95,7 @@
 }
 
 .review-card .review-image img {
-  max-width: 100%;         // Imagen adaptativa al contenedor
+  max-width: 100%;         
   height: auto;
   border-radius: 8px;
   margin-right: 20px;
@@ -252,35 +252,51 @@ h1 {
 
 @media screen and (min-width: 768px) {
   .product-detail-container {
-    flex-direction: row;   // Vuelve a diseño de fila en pantallas medianas
+    flex-direction: row;   
   }
 
   .product-image {
-    width: 50%;            // Tamaño de la imagen reducido a la mitad en pantallas medianas
-    padding-right: 20px;   // Añadido padding derecho
+    width: 50%;            
+    padding-right: 20px;   
   }
 
   .product-details {
-    width: 50%;            // Tamaño de los detalles reducido a la mitad en pantallas medianas
+    width: 50%;            
     margin-left: 20px;
   }
 
   .pay-foms {
-    width: 50%;            // Tamaño de los métodos de pago reducido a la mitad en pantallas medianas
+    width: 50%;        
   }
 }
 
 @media screen and (min-width: 992px) {
   .product-image {
-    width: 40%;            // Tamaño de la imagen reducido a 40% en pantallas grandes
+    width: 40%;           
   }
 
   .product-details {
-    width: 60%;            // Tamaño de los detalles aumentado a 60% en pantallas grandes
+    width: 60%;          
   }
 
   .pay-foms {
-    width: 40%;            // Tamaño de los métodos de pago reducido a 40% en pantallas grandes
+    width: 40%;            
   }
+}
+
+.review-card .review-image img.small-image {
+  max-width: 60px;  
+  max-height: 60px; 
+  border-radius: 40%; 
+}
+
+.review-details .details-row {
+  flex-direction: column; 
+  align-items: flex-start; 
+}
+
+.rating,
+.username {
+  margin-bottom: 0px;  
 }
 

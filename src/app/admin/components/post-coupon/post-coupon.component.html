@@ -5,19 +5,22 @@
     <mat-form-field appearance="outline">
       <mat-label>Nombre</mat-label>
       <input matInput type="text" placeholder="Nombre" formControlName="name" />
-      <mat-error *ngIf="couponForm.get('name')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="couponForm.get('name')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="couponForm.get('name')?.hasError('invalidName')">El nombre debe tener entre 5 y 15 caracteres y no contener números!</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Código</mat-label>
       <input matInput type="text" placeholder="Código" formControlName="code" />
-      <mat-error *ngIf="couponForm.get('code')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="couponForm.get('code')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="couponForm.get('code')?.hasError('invalidCode')">El código debe tener entre 3 y 10 caracteres, estar en mayúsculas y no contener números!</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Descuento (%)</mat-label>
       <input matInput type="number" placeholder="Descuento" formControlName="discount" />
-      <mat-error *ngIf="couponForm.get('discount')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="couponForm.get('discount')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="couponForm.get('discount')?.hasError('max')">El descuento no debe superar el 99%!</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">

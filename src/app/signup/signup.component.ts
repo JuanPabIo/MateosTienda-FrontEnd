@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      name: [null, [Validators.required]],
+      name: [null, [Validators.required, this.validateName]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [
         Validators.required,
@@ -82,7 +82,31 @@ export class SignupComponent implements OnInit {
       return 'La contraseña debe contener al menos un número, una letra mayúscula, una letra minúscula y un carácter especial';
     } else if (control?.hasError('notSame')) {
       return 'Las contraseñas no coinciden';
+    } else if (control?.hasError('invalidName')) {
+      return 'El nombre no debe contener números y debe tener entre 3 y 30 caracteres';
+    } else if (control?.hasError('invalidEmail')) {
+      return 'Por favor, ingresa un correo electrónico válido';
     }
     return '';
+  }
+
+  validateName(control: AbstractControl): {[key: string]: any} | null {
+    const value = control.value;
+    if (!value || value.length < 3 || value.length > 30 || /\d/.test(value)) {
+      return { 'invalidName': true };
+    } else {
+      return null;
+    }
+  }
+
+  validateEmail(control: AbstractControl): {[key: string]: any} | null {
+    const value = control.value;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!regex.test(value)) {
+      return { 'invalidEmail': true };
+    } else {
+      return null;
+    }
   }
 }

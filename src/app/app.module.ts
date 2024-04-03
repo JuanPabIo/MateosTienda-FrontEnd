@@ -13,6 +13,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { BodyComponent } from './body/body.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NavbarComponent } from './customer/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TrackOrderComponent,
     SidenavComponent,
     BodyComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,16 @@
-<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+<form [formGroup]="searchProductForm" class="search-form" (ngSubmit)="submitForm()">
     <mat-form-field appearance="outline" class="search-input">
         <mat-label>¿Qué estás buscando?</mat-label>
         <input matInput formControlName="title">
-        <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
+        <button mat-button matSuffix color="primary" type="submit" [disabled]="searchProductForm.invalid">
             <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
 </form>
 <ng-container *ngIf="!searchPerformed">
     <app-carousel [images]="images" [autoSlide]="true"></app-carousel>
-</ng-container><div class="product-list">
+</ng-container>
+<div class="product-list">
     <mat-card class="product-card" *ngFor="let product of products" (mouseenter)="toggleFavoriteIcon(product.id, true)" (mouseleave)="toggleFavoriteIcon(product.id, false)">
         <div class="favorite-icon" 
              [class.favorite]="product.inWishlist" 

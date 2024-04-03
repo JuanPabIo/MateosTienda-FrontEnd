@@ -1,17 +1,22 @@
 <div class="container">
-    <h2>Añadir categoría</h2>
-    <form [formGroup]="categoryForm" (ngSubmit)="addCategory()" class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" placeholder="Nombre" formControlName="name" />
-        <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">Este campo es obligatorio</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput placeholder="Descripción" formControlName="description" rows="4"></textarea>
-        <mat-error *ngIf="categoryForm.get('description')?.hasError('required')">Este campo es obligatorio</mat-error>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Añadir categoría</button>
-    </form>
-  </div>
-  
+  <h2>Añadir categoría</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="addCategory()" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" placeholder="Nombre" formControlName="name" />
+      <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="categoryForm.get('name')?.hasError('invalidName')">El nombre debe tener entre 5 y 10 caracteres y comenzar con una letra mayúscula!</mat-error>
+      <mat-error *ngIf="categoryForm.get('name')?.hasError('nameHasNumbers')">El nombre no debe contener números!</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción" formControlName="description" rows="4"></textarea>
+      <mat-error *ngIf="categoryForm.get('description')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="categoryForm.get('description')?.hasError('minlength')">La descripción debe tener al menos 30 caracteres</mat-error>
+      <mat-error *ngIf="categoryForm.get('description')?.hasError('maxlength')">La descripción debe tener como máximo 100 caracteres</mat-error>
+      <mat-error *ngIf="categoryForm.get('description')?.hasError('invalidDescription')">La descripción debe comenzar con una letra mayúscula</mat-error>
+      <div class="character-counter">{{ characterCount }}/100</div>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Añadir categoría</button>
+  </form>
+</div>

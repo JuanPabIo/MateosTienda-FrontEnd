@@ -50,12 +50,15 @@
       >
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="form-field">
+   <mat-form-field appearance="outline" class="form-field">
       <mat-label>Nombre</mat-label>
       <input matInput type="text" placeholder="Nombre" formControlName="name" />
-      <mat-error *ngIf="productForm.get('name')?.hasError('required')"
-        >Este campo es obligatorio!</mat-error
-      >
+      <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+        Este campo es obligatorio!
+      </mat-error>
+      <mat-error *ngIf="productForm.get('name')?.hasError('pattern')">
+        El nombre debe tener entre 5 y 15 caracteres, empezar por mayúscula y no contener números.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
@@ -65,10 +68,14 @@
         type="number"
         placeholder="Precio"
         formControlName="price"
+        (input)="onPriceInput($event)"
       />
-      <mat-error *ngIf="productForm.get('price')?.hasError('required')"
-        >Este campo es obligatorio!</mat-error
-      >
+      <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+        Este campo es obligatorio!
+      </mat-error>
+      <mat-error *ngIf="productForm.get('price')?.hasError('pattern')">
+        El precio no debe superar los 6 dígitos.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
@@ -77,10 +84,21 @@
         matInput
         placeholder="Descripcion"
         formControlName="description"
+        (input)="onDescriptionInput($event)"
       ></textarea>
-      <mat-error *ngIf="productForm.get('description')?.hasError('required')"
-        >Este campo es obligatorio!</mat-error
-      >
+      <mat-error *ngIf="productForm.get('description')?.hasError('required')">
+        Este campo es obligatorio!
+      </mat-error>
+      <mat-error *ngIf="productForm.get('description')?.hasError('minlength')">
+        La descripción debe tener al menos 20 letras.
+      </mat-error>
+      <mat-error *ngIf="productForm.get('description')?.hasError('maxlength')">
+        La descripción debe tener un máximo de 100 letras.
+      </mat-error>
+      <mat-error *ngIf="productForm.get('description')?.hasError('pattern')">
+        La descripción debe empezar por mayúscula y contener solo letras y espacios.
+      </mat-error>
+      <div class="character-counter">{{ descriptionLength }}/100</div>
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">

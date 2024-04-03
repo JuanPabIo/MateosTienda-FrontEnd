@@ -8,10 +8,13 @@
         matInput
         placeholder="Pregunta"
         formControlName="question"
+        (input)="onQuestionInput($event)"
       ></textarea>
-      <mat-error *ngIf="FAQForm.get('question')?.hasError('required')"
-        >Este campo es obligatorio!</mat-error
-      >
+      <mat-error *ngIf="FAQForm.get('question')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="FAQForm.get('question')?.hasError('minlength')">La pregunta debe tener al menos 30 letras.</mat-error>
+      <mat-error *ngIf="FAQForm.get('question')?.hasError('maxlength')">La pregunta debe tener un máximo de 120 letras.</mat-error>
+      <mat-error *ngIf="FAQForm.get('question')?.hasError('pattern')">La pregunta debe comenzar y terminar con signos de interrogación y comenzar con una letra mayúscula.</mat-error>
+      <div class="character-counter">{{ questionLength }}/120</div>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
@@ -20,10 +23,13 @@
         matInput
         placeholder="Respuesta"
         formControlName="answer"
+        (input)="onAnswerInput($event)"
       ></textarea>
-      <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')"
-        >Este campo es obligatorio!</mat-error
-      >
+      <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')">Este campo es obligatorio!</mat-error>
+      <mat-error *ngIf="FAQForm.get('answer')?.hasError('minlength')">La respuesta debe tener al menos 30 letras.</mat-error>
+      <mat-error *ngIf="FAQForm.get('answer')?.hasError('maxlength')">La respuesta debe tener un máximo de 120 letras.</mat-error>
+      <mat-error *ngIf="FAQForm.get('answer')?.hasError('pattern')">La respuesta debe comenzar con una letra mayúscula.</mat-error>
+      <div class="character-counter">{{ answerLength }}/120</div>
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Subir pregunta frecuente</button>

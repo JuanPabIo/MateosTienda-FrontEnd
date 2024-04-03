@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class DashboardComponent {
 
   constructor(private adminService: AdminService,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,){}
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog){}
 
   ngOnInit(){
     this.getAllProducts();
@@ -48,21 +51,31 @@ export class DashboardComponent {
     })
   }
 
-  deleteProduct(productId:any){
-    this.adminService.deleteProduct(productId).subscribe((res)=>{
-      console.log(res);
-      if(res == null){
-        this.snackBar.open('Producto eliminado exitosamente', 'Cerrar', {
-          duration: 5000
-        });
-        this.getAllProducts();
-      }else{
-        this.snackBar.open(res.message, 'Cerrar', {
-          duration: 5000,
-          panelClass: 'error-snackbar'
+  deleteProduct(productId: any) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Eliminar Producto',
+        message: '¿Estás seguro que quieres eliminar este producto?'
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.adminService.deleteProduct(productId).subscribe((res) => {
+          console.log(res);
+          if (res == null) {
+            this.snackBar.open('Producto eliminado exitosamente', 'Cerrar', {
+              duration: 5000
+            });
+            this.getAllProducts();
+          } else {
+            this.snackBar.open(res.message, 'Cerrar', {
+              duration: 5000,
+              panelClass: 'error-snackbar'
+            });
+          }
         });
       }
-    })
+    });
   }
-
 }

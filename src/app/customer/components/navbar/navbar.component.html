@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <form [formGroup]="searchProductForm" class="search-form" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>¿Qué estás buscando?</mat-label>
+        <input matInput formControlName="title">
+        <button mat-button matSuffix color="primary" type="submit" [disabled]="searchProductForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+</mat-toolbar>

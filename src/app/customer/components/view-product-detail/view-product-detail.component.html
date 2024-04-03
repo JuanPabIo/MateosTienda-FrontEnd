@@ -41,7 +41,6 @@
     </div>
 </div>
 
-<h1>Productos similares</h1>
 <h1 class="section-heading" *ngIf="reviews.length > 0">Calificación de Clientes</h1>
 <div *ngIf="reviews" class="review-list">
     <div class="review-card" *ngFor="let review of reviews">
@@ -51,8 +50,9 @@
         <div class="review-details">
             <h3>{{ review.description }}</h3>
             <div class="details-row">
-                <p class="rating">Calificación: {{ review.rating }}</p>
-                <p class="username">Usuario: {{ review.username }}</p>
+                <p class="rating">Calificación {{ review.rating }} <i class="fas fa-star"></i></p>
+                <p></p>
+                <p class="username">Hecha por {{ review.username }}</p>
             </div>
         </div>
     </div>

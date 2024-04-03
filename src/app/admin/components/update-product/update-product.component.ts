@@ -10,6 +10,7 @@ import { AdminService } from '../../service/admin.service';
   styleUrls: ['./update-product.component.scss']
 })
 export class UpdateProductComponent {
+  descriptionLength: number = 0;
 
   productId = this.activatedroute.snapshot.params['productId'];
 
@@ -46,16 +47,28 @@ export class UpdateProductComponent {
     }
 
     ngOnInit(): void {
-      this.productForm = this.fb.group({
-        categoryId: [null, [Validators.required]],
-        name: [null, [Validators.required]],
-        price: [null, [Validators.required]],
-        description: [null, [Validators.required]],
-      });
+  this.productForm = this.fb.group({
+    categoryId: [null, [Validators.required]],
+    name: [null, [
+      Validators.required,
+      Validators.pattern(/^[A-Z][a-zA-Z\s]{4,14}$/) // No numbers, 5-15 characters, starts with uppercase
+    ]],
+    price: [null, [
+      Validators.required,
+      Validators.pattern(/^\d{1,6}$/) // Up to 6 digits
+    ]],
+    description: [null, [
+      Validators.required,
+      Validators.minLength(20),
+      Validators.maxLength(100),
+      Validators.pattern(/^[A-Z].{19,99}$/) // Starts with uppercase, 20-100 characters
+    ]],
+  });
 
-      this.getAllCategories();
-      this.getProductById();
-    }
+  this.getAllCategories();
+  this.getProductById();
+}
+
 
     getAllCategories(){
       this.adminService.getAllCategories().subscribe(res=>{
@@ -70,6 +83,31 @@ export class UpdateProductComponent {
       })
     }
 
+    onPriceInput(event: any) {
+      const value = event.target.value;
+      const isValid = /^\d{1,6}$/.test(value);
+      if (!isValid) {
+        event.target.value = value.slice(0, -1);
+      }
+    }
+  
+    onDescriptionInput(event: any) {
+      let value = event.target.value;
+  
+      // Validación para empezar con mayúscula
+      if (value.length === 1) {
+        value = value.toUpperCase() + value.slice(1);
+        event.target.value = value;
+      }
+  
+      const isValid = /^[A-Za-z\s]{0,99}$/.test(value);
+      if (!isValid) {
+        event.target.value = value.slice(0, -1);
+      }
+      this.descriptionLength = event.target.value.length;
+    }
+  
+  
     updateProduct(): void {
       if(this.productForm.valid){
         const formData: FormData = new FormData();

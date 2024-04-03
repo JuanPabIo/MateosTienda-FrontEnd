@@ -16,6 +16,7 @@ import { PostProductFaqComponent } from './components/post-product-faq/post-prod
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     UpdateProductComponent,
     AnalyticsComponent,
     OrderByStatusComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
