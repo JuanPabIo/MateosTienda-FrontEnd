@@ -113,5 +113,17 @@
         opacity: 1; 
     }
 }
+@media (max-width: 1200px) {
+    .product-card {
+      width: calc(50% - 15px); // Cambia el ancho a 50% para mostrar 2 productos por fila en pantallas más pequeñas
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .product-card {
+      width: 100%; // Cambia el ancho a 100% para mostrar 1 producto por fila en pantallas pequeñas
+    }
+  }
 
 }
+

@@ -78,3 +78,8 @@
     background-color: #5c5c5c; 
   }
   
+  @media (max-width: 768px) {
+    .analytics-card {
+      flex: 0 0 100%;
+    }
+  }

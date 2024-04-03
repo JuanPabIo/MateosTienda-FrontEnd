@@ -44,3 +44,9 @@
   font-weight: bold;
   margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+  .order-status-card {
+    flex: 0 0 100%;
+  }
+}
